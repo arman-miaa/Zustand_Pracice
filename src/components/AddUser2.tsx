@@ -1,6 +1,7 @@
-import { Box, Button, TextField, Typography } from "@mui/material"
+
 import React, { useState } from "react"
 import useUser2Store from "../store/User2Store"
+import { Box, Button, TextField } from "@mui/material"
 
 
 const AddUser2 = () => {
@@ -18,7 +19,7 @@ const AddUser2 = () => {
   return (
     <div>
       <Box sx={{ maxWidth: 400, mx: "auto", mt: 4 }}>
-        <Typography variant="h4">Add User 2</Typography>
+        <h3  className="text-5xl">Add User 2</h3>
         <form onSubmit={handleSubmit}>
           <TextField
             label="Name"
