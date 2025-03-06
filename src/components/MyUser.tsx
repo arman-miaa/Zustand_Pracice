@@ -1,10 +1,11 @@
 // src/components/MyUser.tsx
 import { List, ListItem, ListItemText, Typography } from "@mui/material";
-import useUserStore from "../store/userStore";
+
+import useUser2Store from "../store/User2Store";
 
 const MyUser = () => {
   // Zustand স্টোর থেকে ইউজার ডাটা নেওয়া
-  const users = useUserStore((state) => state.users);
+const users2 = useUser2Store((state) => state.user2)
 
   return (
     <div>
@@ -13,14 +14,14 @@ const MyUser = () => {
       </Typography>
       {/* ইউজার লিস্ট দেখানো */}
       <List>
-        {users.length === 0 ? (
+        {users2.length === 0 ? (
           <Typography color="textSecondary">No users added yet!</Typography>
         ) : (
-          users.map((user) => (
+          users2.map((user) => (
             <ListItem key={user.id}>
               <ListItemText
                 primary={user.name}
-                secondary={`Email: ${user.email}`}
+                secondary={user.age}
               />
             </ListItem>
           ))

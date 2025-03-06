@@ -5,7 +5,7 @@ interface NumberState {
   count: number;
   increase: () => void;
   decrease: () => void;
-  reset: () => void;
+  reset: () => void; 
 }
 
 const useNumberStore = create<NumberState>((set) => ({
