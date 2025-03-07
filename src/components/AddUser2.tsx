@@ -1,46 +1,58 @@
-
-import React, { useState } from "react"
-import useUser2Store from "../store/User2Store"
-import { Box, Button, TextField } from "@mui/material"
+import { Button, TextField } from "@mui/material"
+import React, { useState } from "react";
+import useUser2Store from "../store/User2Store";
 
 
 const AddUser2 = () => {
-    const [name,setName] = useState('')
-    const [age, setAge] = useState<number>(0)
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState<number>(0)
+  
+const addUser2 = useUser2Store((state)  => state.addUser2)
 
-    const addUser2 = useUser2Store((state) => state.addUser2);
-    
-    const handleSubmit = (e:React.FormEvent) => {
-        e.preventDefault();
-        addUser2(name,age)
-
-    }
+  const handleSumbit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(name, email, age);
+    addUser2(name,email,age)
+  }
 
   return (
-    <div>
-      <Box sx={{ maxWidth: 400, mx: "auto", mt: 4 }}>
-        <h3  className="text-5xl">Add User 2</h3>
-        <form onSubmit={handleSubmit}>
+    <div className="container mx-auto">
+      <div className="text-center max-w-lg mx-auto">
+        <h1 className="text-2xl text-center">Add User 2</h1>
+        <form onSubmit={handleSumbit}>
           <TextField
-            label="Name"
+            id="name"
             fullWidth
+            label="Name"
             value={name}
-            sx={{ mb: 2 }}
+            variant="outlined"
             onChange={(e) => setName(e.target.value)}
           />
           <TextField
-            label="Age"
+            id="email"
+            sx={{ mt: 2 }}
             fullWidth
-            value={age}
-            sx={{ mb: 2 }}
-            onChange={(e) => setAge(Number(e.target.value))}
-            type="number"
+            label="Email"
+            value={email}
+            variant="outlined"
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <Button type="submit" variant="contained" fullWidth>
-            Add User2
+          <TextField
+            id="age"
+            fullWidth
+            sx={{ mt: 2 }}
+            label="Age"
+            type="number"
+            value={age}
+            variant="outlined"
+            onChange={(e) => setAge(Number(e.target.value))}
+          />
+          <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+            Contained
           </Button>
         </form>
-      </Box>
+      </div>
     </div>
   );
 }
